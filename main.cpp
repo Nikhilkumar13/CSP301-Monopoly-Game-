@@ -50,13 +50,12 @@ void init(void){
 	c1=new charkha();   // Dice 1
 	c2=new charkha();	//Dice 2
 	// num_players=3;
-    cout<<"haha"<<num_players<<endl;
-	p1=new pointer*[num_players];//3 PLAYER
-    // for(int i =0;i<)
-	p1[0]=new pointer(0,new color(1,0,1));//First player , starting position  =  2
+    cout<<"Number Of Players->"<<num_players<<endl;
+    cout<<"Press S to start the Game"<<endl;
+	p1=new pointer*[num_players];
+	p1[0]=new pointer(0,new color(1,0,1));
 	p1[1]=new pointer(0,new color(1,0,0));
 	p1[2]=new pointer(0,new color(0,1,0));
-	cout<<"yoo"<<endl;
 	spin3.first=175;
 	spin3.second=0;
 
@@ -81,12 +80,12 @@ void display(void){
 			p1[i]->make();
 		glPushMatrix();
 			glTranslatef(0,-3.5,0);
-			// c1->make();
+			c1->make();
 		glPopMatrix();
 
 		glPushMatrix();
 			glTranslatef(0,3.5,0);
-			// c2->make();
+			c2->make();
 		glPopMatrix();
 
 		glPopMatrix();
@@ -96,35 +95,11 @@ void display(void){
 	glutSwapBuffers();
 }
 
-void
-displayDiceLeft(void)
+
+void updatePosition(int i)
 {
- 	glClear (GL_COLOR_BUFFER_BIT);
-	glColor3f (1.0,0, 0);
-	glLoadIdentity ();
-
-	// gluLookAt (c.lf.x,c.lf.y,c.lf.z, c.lt.x,c.lt.y,c.lt.z, c.uv.x , c.uv.y, c.uv.z);
-	// gluLookAt(12.0,0.0,20.0,0.0,0.0,0.0,0.0,0.0,0.1);
-
-	glPushMatrix();
-		glRotatef(spin3.first,0,0,1);
-		glRotatef(spin3.second,0,1,0);
-
-		glPushMatrix();
-			glTranslatef(0,3.5,0);
-			c1->make();
-		glPopMatrix();
-
-		glPushMatrix();
-			glTranslatef(0,-3.5,0);
-			c2->make();
-		glPopMatrix();
-
-		glPopMatrix();
-
-
-	glPopMatrix();
-	glutSwapBuffers();
+	p1[i]->show+=39;
+	glutPostRedisplay();
 }
 
 void reshape (int w, int h)
@@ -137,41 +112,14 @@ void reshape (int w, int h)
 
 }
 
-void keyboardDiceLeft (unsigned char key, int x, int y){
-	// cout<<x<<"  "<<y<<endl;
-	if(key==27)
-		exit(0);
-	else if(key==',')
-		spin3.first-=5;
-	else if(key=='.')
-		spin3.first+=5;
-	else if(key=='a')
-		spin3.second-=5;
-	else if(key=='z')
-		spin3.second+=5;
-	else if(key=='m')
-		p1[0]->moven(5);
-    // else if(key=='s')
-    // {
-    //     #include "Gameloop.cpp"
-    // }
-	else if(key=='d'){
-		if(!c1->isbusy && !c2->isbusy){
-			c1->roll(3);
-			c2->roll(6);
-			// cout<<"i am called"<<endl;
-		}
 
-		// displayDiceLeft();
-	}
-	else if(key=='q')
-	{
-		p1[1]->show+=39;
-	}
-	for(int i=0;i<num_players;i++)
-		if(key==i+'1')
-			p1[i]->show+=39;
-	glutPostRedisplay();
+void rollDice(int a , int b)
+{
+
+	 c1->roll(a);
+     c2->roll(b);
+     glutPostRedisplay();
+
 }
 
 void keyboard (unsigned char key, int x, int y){
@@ -195,17 +143,6 @@ void keyboard (unsigned char key, int x, int y){
         #include "Gameloop.cpp"
 
     }
-	else if(key=='d'){
-		// if(!c1->isbusy && !c2->isbusy){
-		// 	c1->roll(3);
-		// 	c2->roll(6);
-			keyboardDiceLeft('d',10,10);
-			// cout<<"yoooo"<<endl;
-		// }
-		// keyboardDiceLeft
-
-		// displayDiceLeft();
-	}
 	else if(key=='q')
 	{
 		p1[1]->show+=39;
@@ -221,7 +158,8 @@ void timer(int n){
 	bool m1=c1->next();
 	bool m2=c2->next();
 	for(int i=0;i<num_players;i++)
-	{p1[i]->updown();
+	{
+		p1[i]->updown();
 	}
 	
 	// p1[0]->next();
@@ -246,10 +184,6 @@ int main(int argc, char** argv)
 	glutTimerFunc(0,timer,20);
 	  // glClearColor(0.137, 0.458, 0.09, 1.0);  //Green
 	glClearColor(0.9, 0.04, 0.04, 1.0);  //Red
-
-   w1 = glutCreateSubWindow(main_w, 0, 0, 400, 200);
-   glutDisplayFunc(displayDiceLeft);
-    glutKeyboardFunc(keyboardDiceLeft);
    glutMainLoop();
    return 0;
 }       

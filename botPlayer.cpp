@@ -42,9 +42,11 @@ using namespace std;
      return choice;
 }
 /*Member function for returning  the rollsum of player*/
-int botPlayer::getrollsum() const
+void botPlayer::getrolls(int &a ,int &b) 
 {
-    return (rollsum);
+    a=rolla;
+    b=rollb;
+    return ;
 }
 /*Member function for if the  botPlayer is still playing*/
   bool  botPlayer::still_playing() const{
@@ -215,11 +217,13 @@ int botPlayer::getrollsum() const
     }
     int die1 ( (rand()%6)+1 ); //Roll 2 6-sided dice
     int die2 ( (rand()%6)+1 );
-    cout<<"You rolled a "<<die1<<" and a "<<die2<<"."<<endl;
+    rolla=die1;
+    rollb=die2;
+    cout<<name <<" rolled a "<<die1<<" and a "<<die2<<"."<<endl;
     if (die1 == die2){ //Print out if the  botPlayer rolled doubles
         cout<<"You rolled doubles!"<<endl;
     }
-        rollsum=die1+die2;
+        // rollsum=die1+die2;
 
     space += (die1 + die2);
     while(space > 40){ //If they pass go, add $200 and subtract 40 from their space number

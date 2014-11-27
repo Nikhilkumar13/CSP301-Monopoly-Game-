@@ -12,7 +12,9 @@ int doubles (0); //Number of doubles rolled
 
 while (true){
     char selection; //char that contains commands from the user
+    cin.clear();
     selection=Players[i]->play();
+    selection='r';
                     
                     
     //Player chooses to roll the dice
@@ -31,11 +33,15 @@ while (true){
             }
         }
 
-                        
-        cout<<Players[i]->getrollsum()<<endl;
-        // p1[i]->moven(Players[i]->getrollsum());
-        p1[i]->show+=39;
-        glutPostRedisplay();
+           int d1=0;
+           int d2=0;             
+        Players[i]->getrolls(d1,d2);
+        cout<<d1 <<" Rolls "<<d2<<endl;
+        rollDice(d1,d2);
+        updatePosition(i);
+        glFinish();
+        // glutPostRedisplay();
+
 
 
 
@@ -463,7 +469,7 @@ while (true){
     
     cout<<Players[currentPlayerPlaying]->getName()+" ka turn over "<<endl;
     currentPlayerPlaying=(currentPlayerPlaying+1)%num_players;
-    cout<<"player "+Players[currentPlayerPlaying]->getName()+"ka turn ane wala hai"<<endl;
+    cout<<"player "+Players[currentPlayerPlaying]->getName()+"Please Press S to take the Dice"<<endl;
     //Find which player is remaining, and he is Winner
     if(temproundcounter>round_counter)
     {
@@ -480,8 +486,7 @@ while (true){
 
   if(Players[currentPlayerPlaying]->isBot())
   {
-    cout<<"bot ko kon bataye iska turn hai ab"<<endl;
-    // flag=false;
+    cout<<"Please Press S to give the Dice to bot"<<endl;
   }
 
 

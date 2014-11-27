@@ -16,7 +16,7 @@ class Player{
         
         /*Getters*/
         virtual bool isBot() const;
-        virtual int getrollsum() const;
+        virtual  void getrolls(int &a,int &b);
         virtual bool still_playing () const; //Returns if the player is still playing or not
        virtual  bool own_property (const int index) const; //Returns if the player owns a specific property
        virtual  string getName () const; //Returns the player's name
@@ -60,6 +60,7 @@ class Player{
         bool jail; //If the player is in jail
         bool GooJF; //Get out of Jail Free card
         bool Bot;
-        int rollsum;
+        int rolla;
+        int rollb;
 };
 

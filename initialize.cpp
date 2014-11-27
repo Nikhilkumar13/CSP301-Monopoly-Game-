@@ -199,6 +199,7 @@
                 cout<<"Time Should be an integer"<<endl<<endl; //If not, inform the user that the number was invalid
             }
         }
+
             
         cout<<"Ok, everything's set up!"<<endl;
     
@@ -206,4 +207,4 @@
     cout<<"Press Enter when all the players are ready to play."<<endl<<endl;
     system("PAUSE");
     //Declare and initialize the remaining variables for use in the gameplay loop
-    cout<<endl<<"Yo!, Evething Okay from initialize.cpp file lets Play!"<<endl;
+    cout<<endl<<"Yo!, Evething Loaded from file lets Play!"<<endl;

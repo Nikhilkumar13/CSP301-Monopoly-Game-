@@ -32,11 +32,13 @@ Player::Player(double start_money, string& player_name,bool bot ){
 }
   char Player::play() const
 {
-     char  choice;
-     cout<<name<<", what would you like to do?"<<endl;
+     char  choice=' ';
+      cout<<name<<", what would you like to do?"<<endl;
      cout<<"(R)oll"<<"\t\t"<<"(S)tats"<<endl;
      cout<<"(B)uy/sell"<<"\t"<<"(T)rade"<<endl;
      cout<<"(M)ortgage"<<endl;
+     cin.clear();
+     cout<<choice<<endl;
      cin>>choice;
      return choice;
 }
@@ -139,9 +141,11 @@ Player::Player(double start_money, string& player_name,bool bot ){
     money += change;
 }
 /*Member function for returning  the rollsum of player*/
-int Player::getrollsum() const
+void Player::getrolls(int &a,int &b)
 {
-    return rollsum;
+    a=rolla;
+    b=rollb;
+    return ;
 }
 /*Member function for buying and selling properties*/
   void Player::setProperty (const int index, const bool status){
@@ -214,11 +218,12 @@ int Player::getrollsum() const
     }
     int die1 ( (rand()%6)+1 ); //Roll 2 6-sided dice
     int die2 ( (rand()%6)+1 );
-    cout<<"You rolled a "<<die1<<" and a "<<die2<<"."<<endl;
+    rolla=die1;
+    rollb=die2;
+    cout<<name<<" rolled a "<<die1<<" and a "<<die2<<"."<<endl;
     if (die1 == die2){ //Print out if the player rolled doubles
         cout<<"You rolled doubles!"<<endl;
     }
-    rollsum=die1+die2;
     space += (die1 + die2);
     while(space > 40){ //If they pass go, add $200 and subtract 40 from their space number
         space -= 40;

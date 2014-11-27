@@ -17,7 +17,7 @@ class botPlayer:public Player {
         
         /*Getters*/
          bool isBot() const;
-         int getrollsum() const;
+         void getrolls(int &a,int &b);
           bool still_playing () const; //Returns if the player is still playing or not
           bool own_property (const int index) const; //Returns if the player owns a specific property
           string getName () const; //Returns the player's name
