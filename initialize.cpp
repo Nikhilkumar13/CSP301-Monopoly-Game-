@@ -182,22 +182,24 @@
             cout<<endl;
         }
         //Inform the player that everything is set up
-        cout<<"Enter time limit of game"<<endl;
-        {
-            while(true)
-            {
-                cin>>gameTimeLimit;
-                if(gameTimeLimit>0)
-                {
-                    break;
-
-                }
-                else
-                {
-                    cout<<"Time Should be an integer"<<endl;
-                }
+        
+           while(true)
+           {
+                cout<<"Enter time limit of game"<<endl;
+            while(!(cin>>gameTimeLimit)){
+                cin.clear();
+                getline(cin, trash, '\n');
+                cout<<"Invalid input. Please enter a number between 2 and 6."<<endl;
+            }
+            if(gameTimeLimit>=0){ //If a valid number is chosen, break out of the loop
+                cout<<endl;
+                break;
+            }
+            else{
+                cout<<"Time Should be an integer"<<endl<<endl; //If not, inform the user that the number was invalid
             }
         }
+            
         cout<<"Ok, everything's set up!"<<endl;
     
     //Inform the user that the game is set up, and they are ready to start
