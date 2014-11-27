@@ -14,7 +14,7 @@ while (true){
     char selection; //char that contains commands from the user
     cin.clear();
     selection=Players[i]->play();
-    selection='r';
+    // selection='r';
                     
                     
     //Player chooses to roll the dice
@@ -38,7 +38,14 @@ while (true){
         Players[i]->getrolls(d1,d2);
         // cout<<d1 <<" Rolls "<<d2<<endl;
         rollDice(d1,d2);
-        updatePosition(i);
+
+        if(Players[currentPlayerPlaying]->isBot())
+        {
+            for(int j=0;j<d1+d2;j++)
+            {
+             updatePosition(i);
+            }
+        }
         glFinish();
         // glutPostRedisplay();
 
@@ -475,7 +482,7 @@ while (true){
     {
     if(players_remaining<=1)
     {
-        void declareWinner();
+         declareWinner();
    
         cout<<"Thanks for playing! Monopoly"<<endl<<endl;
 

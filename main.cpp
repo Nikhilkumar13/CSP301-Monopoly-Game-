@@ -145,7 +145,8 @@ void keyboard (unsigned char key, int x, int y){
     }
 	else if(key=='q')
 	{
-		p1[1]->show+=39;
+		declareWinner();
+		
 	}
 	for(int i=0;i<num_players;i++)
 		if(key==i+'1')

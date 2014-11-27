@@ -32,27 +32,38 @@ int duration (0); //Amount of time that has passed during the gameplay
     Player *Players[6];
      //Max number of players is 6
     void declareWinner(){
+
+        int temp(0);
+        int position(0);
+        for(int i(0);i<num_players;i++)
+        {
+            int temp2=Players[i]->getAssets(property);
+            if(temp2>=temp)
+            {
+                temp=temp2;
+                position=i;
+
+            }
+        }
      for (int i(0); i < num_players; i++){
         if ( Players[i]->still_playing() ){
-            cout<<"Congratulations, "<< Players[i]->getName()<<"!"<<endl;
-            cout<<"You won!"<<endl;
-            cout<<"You total assets are worth $"<< Players[i]->getAssets(property)<<"."<<endl; //Print out the player's assets
-            cout<<"You game lasted a total of "<<(duration / 3600)<<"hour(s), "<<((duration % 3600) / 60)<<"minute(s), and "<< (duration % 3600) % 60 << "second(s)."<<endl; //Print out the duration of gameplay
-            cout<<"and was played over the course of "<<turn_counter<<" turns."<<endl; //Print out the number of turns
+            cout<< Players[i]->getName();
+            cout<<"   You total assets are worth $"<< Players[i]->getAssets(property)<<"."<<endl; //Print out the player's assets
+           
         }
     }
-}
+    cout<<"=========================================================================================="<<endl;
+    cout<<Players[position]->getName()<<" Won by having assets of worth value $ "<<Players[position]->getAssets(property)<<endl;
+    cout<<"=========================================================================================="<<endl;
 
-void declareWinnerbytime(){
-     for (int i(0); i < num_players; i++){
-        if ( Players[i]->still_playing() ){
-            cout<<"Congratulations, "<< Players[i]->getName()<<"!"<<endl;
-            cout<<"You won!"<<endl;
-            cout<<"You total assets are worth $"<< Players[i]->getAssets(property)<<"."<<endl; //Print out the player's assets
             cout<<"You game lasted a total of "<<(duration / 3600)<<"hour(s), "<<((duration % 3600) / 60)<<"minute(s), and "<< (duration % 3600) % 60 << "second(s)."<<endl; //Print out the duration of gameplay
             cout<<"and was played over the course of "<<turn_counter<<" turns."<<endl; //Print out the number of turns
-            cout<<"and was played over the course of rounds"<<round_counter<<" turns."<<endl; //Print out the number of turns
+            cout<<"Do you Really wana quit the Game in Between press y/n"<<endl;
+            char ch;
+            cin>>ch;
+            if(ch=='y'|ch=='Y')
+            {
+                exit(0);
+            }
 
-        }
-    }
 }
