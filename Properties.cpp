@@ -14,15 +14,11 @@ Properties::Properties(istream& inFile){
     getline(inFile, textIO);
     if(!(inFile)){
         cout<<"Error reading property data."<<endl<<endl;
-//        system("PAUSE");
-//        exit(1);
     }
     name = textIO;
     inFile>>space;
     if(!(inFile)){
         cout<<"Error reading property data."<<endl<<endl;
-//        system("PAUSE");
-//        exit(1);
     }
     /*Read in no additional data for non-general property spaces*/
     if(space == 1 || space == 3 || space == 5 || space == 8 || space == 11 || space == 18 || space == 21 || space == 23 || space == 31 || space == 34 || space == 37 || space == 39){
@@ -38,8 +34,6 @@ Properties::Properties(istream& inFile){
             owned = false;
         if(!(inFile)){
             cout<<"Error reading property data."<<endl<<endl;
-//            system("PAUSE");
-//            exit(1);
         }
     }
     /*Read in special data for utilities*/
@@ -47,8 +41,6 @@ Properties::Properties(istream& inFile){
         inFile>>id>>price>>mortgage;
         if(!(inFile)){
             cout<<"Error reading property data."<<endl<<endl;
-//            system("PAUSE");
-//            exit(1);
         }
         h0=h1=h2=h3=h4=hotel=h_cost=houses=0; //Set unused data members = 0
         mortgaged = false;
@@ -59,8 +51,6 @@ Properties::Properties(istream& inFile){
         inFile>>id>>price>>mortgage>>h0>>h1>>h2>>h3>>h4>>hotel>>h_cost;
         if(!(inFile)){
             cout<<"Error reading property data."<<endl<<endl;
-//            system("PAUSE");
-//            exit(1);
         }
         houses = 0; //Starts with no houses
         mortgaged = false;
@@ -189,25 +179,4 @@ void Properties::return_default (){
     owned = false;
     mortgaged = false;
     houses = 0;
-}
-
-/*Friend operators*/     
-istream& operator>> (istream& is, Properties& p){ //Used to read in data from the save file
-    int in_houses;
-    bool in_mortgaged, in_owned;
-    if(is>>in_houses>>in_mortgaged>>in_owned){ //If the data is read in
-        p.houses = in_houses;
-        p.mortgaged = in_mortgaged;
-        p.owned = in_owned;
-    }
-    else{ //If there is an error
-        cout<<"Error reading property data from the save file."<<endl;
-//        system("PAUSE");
-//        exit(1);
-    }
-    return (is);
-}
-ostream& operator<< (ostream& os, Properties& p){ //Used to write data to the save file
-    os << p.houses << " " << p.mortgaged << " " << p.owned << endl;
-    return (os);
 }
