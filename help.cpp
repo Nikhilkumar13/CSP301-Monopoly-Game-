@@ -1,5 +1,9 @@
 
 image*img=NULL;
+/**
+*Function to make cube
+*
+*/
 void makeCube(float w){
 	for(int i=0;i<3;i++)
 		for(int j=0;j<2;j++){
@@ -42,6 +46,9 @@ void makeCube(float w){
 		}
 }
 
+/**
+*Function to makefloor
+*/
 
 void makeFloor(void){
 	int model=2;

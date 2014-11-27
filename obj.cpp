@@ -1,12 +1,21 @@
+
+/*!Class to make Dice */
 class charkha{
 	public:
 		int rot,ro;
 		bool isbusy;
+		/**
+		*Constructer of class charkha
+		*/
 		charkha(){
 			isbusy=false;
 			rot=0;
 			ro=100;
 		}
+		/**
+		*
+		*
+		*/
 		void make(){
 			glPushMatrix();
 				glRotatef(rot,0,0,1);
@@ -20,18 +29,6 @@ class charkha{
 				glEnd();
 				}
 				for(int i=0;i<=360;i+=60){
-
-
-					
-					// for(int j=0;j<(i/60);j++){
-					// 	glPushMatrix();
-					// 		glColor3f(1,0,0);
-					// 		glTranslatef(  (j*r/12.0+r/4)*cos(rad(i+30)) , (j*r/12.0+r/4)*sin(rad(i+30)) , 2 );
-					// 		glutSolidCube(0.1);
-					// 	glPopMatrix();
-					// }
-
-
 
 					if(  ((i/60)%2) )
 						glColor3f(0,1,0);
@@ -58,6 +55,10 @@ class charkha{
 				}
 			glPopMatrix();
 		}
+		/**
+		*
+		*
+		*/
 		bool next(){
 			if(rot < 30+60*(14-ro)){
 				rot+=10;
@@ -68,6 +69,10 @@ class charkha{
 				return false;
 			}
 		}
+		/**
+		*
+		*
+		*/
 		bool roll(int outp){
 			if(!isbusy){
 				isbusy=true;
@@ -77,6 +82,8 @@ class charkha{
 		}
 };
 
+
+/*!Class to make Player */
 
 
 class pointer{
@@ -88,6 +95,10 @@ class pointer{
 		int movecount;
 		bool busymoving;
 		int havetomove;
+		/**
+		*Constructer of class pointer
+		*
+		*/
 		pointer(int s,color*c=NULL){
 			busymoving=false;
 			upcount=0;

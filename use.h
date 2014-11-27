@@ -10,7 +10,7 @@ float deg(float ang){
 	return ang*180.0/M_PI;
 }
 
-
+/*!Class to encapsulates vector*/
 class vector{
 	public:
 		float x,y,z;
@@ -26,7 +26,7 @@ class vector{
 				cout<<endl;
 		}
 };
-
+/*!Class to encapsulates color on board*/
 class color{
 	public:
 		float r,g,b;
@@ -40,20 +40,8 @@ class color{
 		}
 };
 
-// if(lfv==NULL)
-// 				lf=*(new vector(8,0,20));
-// 			else
-// 				lf=*lfv;
-// 			if(ltv==NULL)
-// 				lt=*(new vector(0,0,0));
-// 			else
-// 				lt=*ltv;
-// 			if(uvv==NULL)
-// 				uv=*(new vector(0,1,1));
-// 			else
-// 				uv=*uvv;
-// 		}
 
+/*!Class tomake camera as blackbox*/
 class camera{
 	public:
 		vector lf,lt,uv;//Look From,Look Toward,Upper Vector
@@ -73,13 +61,13 @@ class camera{
 		}
 };
 
+/*!Class to draw the image on board*/
 class image{
 	public:
 		int w,h;
 		unsigned char *data2;
 		image(const char*fn){
 			FILE *f;
-	//		f=fopen("img2.bmp","rb");
 			f=fopen(fn,"rb");
 			unsigned char*data1=new unsigned char[54];
 			fread(data1,1,54,f);

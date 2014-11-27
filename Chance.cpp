@@ -15,40 +15,32 @@ Chance::Chance(istream& inFile){
     getline(inFile, textIO);
     if (!(inFile)){ //Check for errors each time
         cout<<"Error reading chance data."<<endl<<endl;
-//        system("PAUSE");
-//        exit(1);
     }
     s1 = textIO;
     getline(inFile, textIO);
     if (!(inFile)){ //Check for error
         cout<<"Error reading chance data."<<endl<<endl;
-//        system("PAUSE");
-//        exit(1);
+
     }
     s2 = textIO;
     inFile>>move_to_space;
     if (!(inFile)){ //Check for error
         cout<<"Error reading chance data."<<endl<<endl;
-//        system("PAUSE");
-//        exit(1);
     }
     inFile>>money_bank;
     if (!(inFile)){ //Check for error
         cout<<"Error reading chance data."<<endl<<endl;
-//        system("PAUSE");
-//        exit(1);
+
     }
     inFile>>money_players;
-    if (!(inFile)){ //Check for error
+    if (!(inFile)){ 
         cout<<"Error reading chance data."<<endl<<endl;
-//        system("PAUSE");
-//        exit(1);
+
     }
     inFile>>exception;
-    if (!(inFile)){ //Check for error
+    if (!(inFile)){ 
         cout<<"Error reading chance data."<<endl<<endl;
-//        system("PAUSE");
-//        exit(1);
+
     }
     /*The following can be used by the programmer to have the program read out all data, to ensure correct data input*/
     // cout<<"========================================="<<endl;

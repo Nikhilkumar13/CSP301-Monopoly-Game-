@@ -4,3 +4,15 @@ Monopoly
 		Nikhil kumar
 
 Bot Startegy used from this  http://www.amnesta.net/other/monopoly/
+
+System requirement:
+
+Linux
+gcc compiler
+cmake 
+
+To Run:
+open terminal in game folder directory run following comand
+cmake .
+make
+./Game

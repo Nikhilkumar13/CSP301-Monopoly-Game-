@@ -1,36 +1,58 @@
-    int gameTimeLimit(0);   //zero means unlimited time
-    int num_chance; //Number of Chance cards
-    int num_chest; //number of chest cards
+/*!  time how long game should last*/
+    int gameTimeLimit(0); 
+    /*!Number of Chance cards*/ 
+    int num_chance; 
+   /*!number of chest cards */
+    int num_chest; 
+    /*! number of Players*/
     int num_players(3);
+    /*! Number of players remaning*/
     int players_remaining (num_players);
-int currentPlayerPlaying(0);
-int round_counter(0);
-      //Create variables for the settings
-    double starter_money (1500); //The amount of money that the player starts with
-    bool roll_again (true); //Determines if the player is allowed to roll again if they roll doubles
-    bool jackpot (false); //Determines if the player collects 'jackpot' money when they land on 'Free Parking'
+    /*! which player is currently playing*/
+    int currentPlayerPlaying(0);
+    /*! how many rounds */
+    int round_counter(0);
+/*! The amount of money that the player starts with*/
+
+    double starter_money (1500); 
+    /*!Determines if the player is allowed to roll again if they roll doubles */
+    bool roll_again (true); 
+    /*!Determines if the player collects 'jackpot' money when they land on 'Free Parking */
+    bool jackpot (false); //
+    /*!Number of Computer players */
     
-    //Declare and initialize the remaining variables for use in the gameplay loop
     int numberOfBots(0);
+    /*! Number of human Players*/
     int numberOfHuman(0);
-    const int start_time ( unsigned( time(0) ) ); //The start time of the game
-    int current_time (0); //The current time of the game
-    int previous_time (0); //Passed time from a previous game
-    double jackpot_value (0); //Set the jackpot value
-    int turn_counter(0); //Counts the number of turns
-int duration (0); //Amount of time that has passed during the gameplay
-    // int num_players; //Variable that hold the number of players    present in main file
-    //Create a Yes/No variable
-        Properties property[40]; //Create an array of Property objects (there will always be 40 spaces on the board
-                Chest * chest_cards; //Create an array of Chest objects
-      Chance* chance_cards; //Create an array of Chance objects
-     string trash; //This string is only used to move the 'getline' function down a line so that it may read in the correct data
+    /*! The start time of the game*/
+    const int start_time ( unsigned( time(0) ) ); 
+    /*! The current time of the game*/
+    int current_time (0); 
+    /*!Passed time from a previous game */
+    int previous_time (0); //
+    /*! Set the jackpot value*/
+    double jackpot_value (0); 
+    /*!Counts the number of turns */
+    int turn_counter(0); 
+    /*! Amount of time that has passed during the gameplay*/
+    int duration (0); 
+    /*! Create an array of Property objects (there will always be 40 spaces on the board)*/
+    Properties property[40]; 
+    /*! Create an array of Chest objects*/
+    Chest * chest_cards; 
+    /*! Create an array of Chance objects*/
+      Chance* chance_cards; 
+      /*! This string is only used to move the 'getline' function down a line so that it may read in the correct data*/
+     string trash; 
+     /*! */
 
     char YN ('N');
-    char wantBot('N');
-    //Create an array of 'Player' objects
+    /*!Create an array of 'Player' objects MAX 6 */
     Player *Players[6];
-     //Max number of players is 6
+    /** A function to declare winner on abruptly stoping game
+    *
+    *return void
+    */
     void declareWinner(){
 
         int temp(0);
