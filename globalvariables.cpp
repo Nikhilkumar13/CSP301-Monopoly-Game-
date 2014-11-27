@@ -1,9 +1,10 @@
-
+    int gameTimeLimit(0);   //zero means unlimited time
     int num_chance; //Number of Chance cards
     int num_chest; //number of chest cards
     int num_players(3);
     int players_remaining (num_players);
-int currentPlayerPaying(0);
+int currentPlayerPlaying(0);
+int round_counter(0);
       //Create variables for the settings
     double starter_money (1500); //The amount of money that the player starts with
     bool roll_again (true); //Determines if the player is allowed to roll again if they roll doubles
@@ -30,3 +31,28 @@ int duration (0); //Amount of time that has passed during the gameplay
     //Create an array of 'Player' objects
     Player *Players[6];
      //Max number of players is 6
+    void declareWinner(){
+     for (int i(0); i < num_players; i++){
+        if ( Players[i]->still_playing() ){
+            cout<<"Congratulations, "<< Players[i]->getName()<<"!"<<endl;
+            cout<<"You won!"<<endl;
+            cout<<"You total assets are worth $"<< Players[i]->getAssets(property)<<"."<<endl; //Print out the player's assets
+            cout<<"You game lasted a total of "<<(duration / 3600)<<"hour(s), "<<((duration % 3600) / 60)<<"minute(s), and "<< (duration % 3600) % 60 << "second(s)."<<endl; //Print out the duration of gameplay
+            cout<<"and was played over the course of "<<turn_counter<<" turns."<<endl; //Print out the number of turns
+        }
+    }
+}
+
+void declareWinnerbytime(){
+     for (int i(0); i < num_players; i++){
+        if ( Players[i]->still_playing() ){
+            cout<<"Congratulations, "<< Players[i]->getName()<<"!"<<endl;
+            cout<<"You won!"<<endl;
+            cout<<"You total assets are worth $"<< Players[i]->getAssets(property)<<"."<<endl; //Print out the player's assets
+            cout<<"You game lasted a total of "<<(duration / 3600)<<"hour(s), "<<((duration % 3600) / 60)<<"minute(s), and "<< (duration % 3600) % 60 << "second(s)."<<endl; //Print out the duration of gameplay
+            cout<<"and was played over the course of "<<turn_counter<<" turns."<<endl; //Print out the number of turns
+            cout<<"and was played over the course of rounds"<<round_counter<<" turns."<<endl; //Print out the number of turns
+
+        }
+    }
+}

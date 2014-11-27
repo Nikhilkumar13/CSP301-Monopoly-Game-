@@ -1,36 +1,41 @@
+ // players_remaining = num_players; //Reset the player counter
+ // for(int i(0); i < num_players; i++){
+while(!Players[currentPlayerPlaying]->still_playing())
+    {
+        currentPlayerPlaying=(currentPlayerPlaying+1)%num_players;
+        turn_counter++;
+    }
+               //Check to ensure that this player is still playing
+int i=currentPlayerPlaying;
+Players[i]->debt(property);
+int doubles (0); //Number of doubles rolled
 
 while (true){
-        players_remaining = num_players; //Reset the player counter
-        for(int i(0); i < num_players; i++){
-            if (Players[i]->still_playing()){ //Check to ensure that this player is still playing
-                Players[i]->debt(property);
-                int doubles (0); //Number of doubles rolled
-                while (true){
-                    char selection; //char that contains commands from the user
-                    selection=Players[i]->play();
+    char selection; //char that contains commands from the user
+    selection=Players[i]->play();
                     
                     
-                    //Player chooses to roll the dice
-                    
-                    if (selection == 'r' || selection == 'R'){
-                        int other_player (0); //Which player money goes to
-                        double money_other_player  (0); //Money that goes to other player
-                        double money_all_players (0); //Money that goes to all players
-                        int exception (0); //Returns exceptions (1 is generic property; 5, 15, 25, 35 is nearest RR; 12, 28 is nearest utility)
-                         Players[i]->roll(i, property, chest_cards, chance_cards, roll_again, jackpot, jackpot_value, doubles, num_chest, num_chance, money_other_player, money_all_players, exception);
-                        if (money_all_players != 0){ //If money goes to all players (such as from a chance card), perform the operation
-                            for (int n(0); n < num_players; n++){
-                                if (n != i){
-                                    Players[i]->addMoney(money_all_players);
-                                    Players[n]->subMoney(money_all_players);
-                                }
-                            }
-                        }
+    //Player chooses to roll the dice
+    if (selection == 'r' || selection == 'R'){
+        int other_player (0); //Which player money goes to
+        double money_other_player  (0); //Money that goes to other player
+        double money_all_players (0); //Money that goes to all players
+        int exception (0); //Returns exceptions (1 is generic property; 5, 15, 25, 35 is nearest RR; 12, 28 is nearest utility)
+            Players[i]->roll(i, property, chest_cards, chance_cards, roll_again, jackpot, jackpot_value, doubles, num_chest, num_chance, money_other_player, money_all_players, exception);
+        if (money_all_players != 0){ //If money goes to all players (such as from a chance card), perform the operation
+            for (int n(0); n < num_players; n++){
+                if (n != i){
+                    Players[i]->addMoney(money_all_players);
+                    Players[n]->subMoney(money_all_players);
+                }
+            }
+        }
 
                         
-                        cout<<Players[i]->getrollsum()<<endl;
-                        p1[i]->moven(Players[i]->getrollsum());
-                       glutPostRedisplay();
+        cout<<Players[i]->getrollsum()<<endl;
+        // p1[i]->moven(Players[i]->getrollsum());
+        p1[i]->show+=39;
+        glutPostRedisplay();
 
 
 
@@ -437,31 +442,46 @@ while (true){
                         cout<<endl<<"Invalid input. Please enter one of the shown letters."<<endl<<endl;
                     }
                 }
-                if (!( Players[i]->still_playing() ) ){ //If the player stopped playing this turn, reduce the counter by 1
-                    players_remaining--;
-                }
-            }
-            else { //If the player is no longer playing, subtract the number of remaining players by 1
-                players_remaining--;
-            }
-        }
-        if (players_remaining <= 1){ //When 1 (or possibly 0) player is remaining, break out of the gameplay loop
-            break;
-        }
+                // if (!( Players[i]->still_playing() ) ){ //If the player stopped playing this turn, reduce the counter by 1
+                //     players_remaining--;
+                // }
+            // }
+            // else { //If the player is no longer playing, subtract the number of remaining players by 1
+            //     players_remaining--;
+            // }
+        // }
+        // if (players_remaining <= 1){ //When 1 (or possibly 0) player is remaining, break out of the gameplay loop
+        //     break;
+        // }
+
         turn_counter++; //Increase the turn counter by 1
+        int temproundcounter = round_counter+turn_counter/num_players;
         current_time = unsigned( time(0) ); //Find the current time
         duration = previous_time + (current_time - start_time); //Calculate how long the players have been playing for
-      
-    }
-    cout<<endl;
+        cout<<"duration "<<duration<<endl;
+
+    
+    cout<<Players[currentPlayerPlaying]->getName()+" ka turn over "<<endl;
+    currentPlayerPlaying=(currentPlayerPlaying+1)%num_players;
+    cout<<"player "+Players[currentPlayerPlaying]->getName()+"ka turn ane wala hai"<<endl;
     //Find which player is remaining, and he is Winner
-    for (int i(0); i < num_players; i++){
-        if ( Players[i]->still_playing() ){
-            cout<<"Congratulations, "<< Players[i]->getName()<<"!"<<endl;
-            cout<<"You won!"<<endl;
-            cout<<"You total assets are worth $"<< Players[i]->getAssets(property)<<"."<<endl; //Print out the player's assets
-            cout<<"You game lasted a total of "<<(duration / 3600)<<"hour(s), "<<((duration % 3600) / 60)<<"minute(s), and "<< (duration % 3600) % 60 << "second(s)."<<endl; //Print out the duration of gameplay
-            cout<<"and was played over the course of "<<turn_counter<<" turns."<<endl; //Print out the number of turns
-        }
+    if(temproundcounter>round_counter)
+    {
+    if(players_remaining<=1)
+    {
+        void declareWinner();
+   
+        cout<<"Thanks for playing! Monopoly"<<endl<<endl;
+
     }
-    cout<<"Thanks for playing!"<<endl<<endl;
+    cout<<"Thanks for one round playing!"<<endl<<endl;
+  }
+  round_counter=temproundcounter;
+
+  if(Players[currentPlayerPlaying]->isBot())
+  {
+    cout<<"bot ko kon bataye iska turn hai ab"<<endl;
+    // flag=false;
+  }
+
+

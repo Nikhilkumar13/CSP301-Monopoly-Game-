@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/Game.dir/Chance.o CMakeFiles/Game.dir/Chest.o CMakeFiles/Game.dir/main.o CMakeFiles/Game.dir/Player.o CMakeFiles/Game.dir/Properties.o CMakeFiles/Game.dir/botPlayer.o  -o Game -rdynamic -lGLU -lGL -lSM -lICE -lX11 -lXext -lglut -lXmu -lXi 

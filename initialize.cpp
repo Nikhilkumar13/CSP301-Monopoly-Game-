@@ -182,6 +182,22 @@
             cout<<endl;
         }
         //Inform the player that everything is set up
+        cout<<"Enter time limit of game"<<endl;
+        {
+            while(true)
+            {
+                cin>>gameTimeLimit;
+                if(gameTimeLimit>0)
+                {
+                    break;
+
+                }
+                else
+                {
+                    cout<<"Time Should be an integer"<<endl;
+                }
+            }
+        }
         cout<<"Ok, everything's set up!"<<endl;
     
     //Inform the user that the game is set up, and they are ready to start

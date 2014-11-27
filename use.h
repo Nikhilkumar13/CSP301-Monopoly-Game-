@@ -40,12 +40,26 @@ class color{
 		}
 };
 
+// if(lfv==NULL)
+// 				lf=*(new vector(8,0,20));
+// 			else
+// 				lf=*lfv;
+// 			if(ltv==NULL)
+// 				lt=*(new vector(0,0,0));
+// 			else
+// 				lt=*ltv;
+// 			if(uvv==NULL)
+// 				uv=*(new vector(0,1,1));
+// 			else
+// 				uv=*uvv;
+// 		}
+
 class camera{
 	public:
 		vector lf,lt,uv;//Look From,Look Toward,Upper Vector
 		camera(vector*lfv,vector*ltv,vector*uvv){
 			if(lfv==NULL)
-				lf=*(new vector(8,0,20));
+				lf=*(new vector(12,0,20));
 			else
 				lf=*lfv;
 			if(ltv==NULL)

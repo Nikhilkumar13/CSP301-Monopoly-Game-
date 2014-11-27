@@ -20,13 +20,19 @@ class charkha{
 				glEnd();
 				}
 				for(int i=0;i<=360;i+=60){
-					for(int j=0;j<(i/60);j++){
-						glPushMatrix();
-							glColor3f(1,0,0);
-							glTranslatef(  (j*r/12.0+r/4)*cos(rad(i+30)) , (j*r/12.0+r/4)*sin(rad(i+30)) , 2 );
-							glutSolidCube(0.1);
-						glPopMatrix();
-					}
+
+
+					
+					// for(int j=0;j<(i/60);j++){
+					// 	glPushMatrix();
+					// 		glColor3f(1,0,0);
+					// 		glTranslatef(  (j*r/12.0+r/4)*cos(rad(i+30)) , (j*r/12.0+r/4)*sin(rad(i+30)) , 2 );
+					// 		glutSolidCube(0.1);
+					// 	glPopMatrix();
+					// }
+
+
+
 					if(  ((i/60)%2) )
 						glColor3f(0,1,0);
 					else
@@ -37,6 +43,18 @@ class charkha{
 						glVertex3f( r*cos(rad(i+60)), r*sin(rad(i+60)) , 0);
 						glVertex3f( r*cos(rad(i)), r*sin(rad(i)), 0 );
 					glEnd();
+					float sx=r*cos(rad(i));
+					float sy=r*sin(rad(i));
+					float dx=r*cos(rad(i+60))-sx;
+					float dy=r*sin(rad(i+60))-sy;
+					for(int p=1;p<=(i/60);p++){
+						glPushMatrix();
+							glColor3f(0,0,0);
+							glTranslatef( sx+p*dx/8 , sy+p*dy/8 , 1 );
+							glutSolidCube(0.1);
+						glPopMatrix();
+					}
+
 				}
 			glPopMatrix();
 		}
@@ -58,6 +76,9 @@ class charkha{
 			}
 		}
 };
+
+
+
 class pointer{
 	public:
 		float ph;
@@ -77,9 +98,10 @@ class pointer{
 			if(c==NULL)
 				clr=new color(1,1,1);
 			else
+
 				clr=c;
 		}
-		void updown(){// Pointer is going up and down, when nothing is happening
+		void updown(){// Pointer is going up and down, when nothing is happenping
 			if(upcount % (1<<2) == 0)//Use 1 in place of 2, to do faster uplifing and downgoing
 				ph=(ph==1?1.3:1);
 			upcount=( (upcount+1)%(1<<30));
@@ -95,7 +117,7 @@ class pointer{
 			else
 				busymoving=false;
 		}
-		void moven(int n){//put the player to n step ahed
+		void moven(int n){//put the player to n step ahead
 			if(!busymoving){
 				havetomove=n;
 				busymoving=true;
