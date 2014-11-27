@@ -36,7 +36,7 @@ while (true){
            int d1=0;
            int d2=0;             
         Players[i]->getrolls(d1,d2);
-        cout<<d1 <<" Rolls "<<d2<<endl;
+        // cout<<d1 <<" Rolls "<<d2<<endl;
         rollDice(d1,d2);
         updatePosition(i);
         glFinish();
@@ -467,9 +467,9 @@ while (true){
         cout<<"duration "<<duration<<endl;
 
     
-    cout<<Players[currentPlayerPlaying]->getName()+" ka turn over "<<endl;
+    cout<<Players[currentPlayerPlaying]->getName()+" Turn's over "<<endl;
     currentPlayerPlaying=(currentPlayerPlaying+1)%num_players;
-    cout<<"player "+Players[currentPlayerPlaying]->getName()+"Please Press S to take the Dice"<<endl;
+    cout<<"player "+Players[currentPlayerPlaying]->getName()+" Press S to take the Dice"<<endl;
     //Find which player is remaining, and he is Winner
     if(temproundcounter>round_counter)
     {
